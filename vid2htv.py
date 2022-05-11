@@ -3,7 +3,14 @@ import os
 import subprocess
 import shutil
 sg.theme('DarkAmber')
-
+sg.theme_background_color('#9AC7F5')
+sg.theme_text_color('#000000')
+sg.theme_button_color('#9AC7F5')
+sg.theme_input_background_color('#894AD3')
+sg.theme_input_text_color('#F0AEF1')
+BtTexCol='#BF4AD4'
+TexBGCol='#9AC7F5'
+print(vars(sg.theme))
 input_video='video.mp4'
 output_video='output'
 palette=32
@@ -17,20 +24,20 @@ abr=32
 
 
 
-layout =   [[sg.Text('Input video', size=(10, 1)),sg.Input(key='ipath'), sg.FileBrowse(key='input',target='ipath')],
-            [sg.Text('Output video', size=(10, 1)),sg.Input(key='opath'), sg.FileSaveAs(key='output',target='opath')],
-            [sg.Text('                              Palette size', size=(24, 1)),sg.Input(key='palette', size=(12, 1),default_text='32')],
-            [sg.Text('                               Video width', size=(24, 1)),sg.Input(key='width', size=(12, 1),default_text='256')],
-            [sg.Text('                              Video height', size=(24, 1)),sg.Input(key='height', size=(12, 1),default_text='192')],
-            [sg.Text('                                Frame rate', size=(24, 1)),sg.Input(key='fps', size=(12, 1),default_text='15')],
-            [sg.Text('                              Video dither', size=(24, 1)),sg.Combo(['bayer','heckbert','floyd_steinberg','sierra2','sierra2_4a'],key='dither', size=(12, 1),default_value='sierra2')],
-            [sg.Text('                    Audio compression     ', size=(24, 1)),sg.Combo(['vorbis','wma','pcm'],key='acd',size=(12, 1),default_value='wma')],
-            [sg.Text('                     Audio sample rate    ', size=(24, 1)),sg.Combo(['8000','11025','16000','22050','24000','32000','44100','48000'],key='asr', size=(12, 1),default_value='44100')],
-            [sg.Text('                            Audio bit rate', size=(24, 1)),sg.Combo(['8k','16k','24k','32k','40k','48k','56k','64k','80k','96k','128k'],key='abr', size=(12, 1),default_value='32k')],
-            [sg.Text('Ready!',size=(69,1),key='status')],
+layout =   [[sg.Text('Input video',background_color=TexBGCol, size=(10, 1)),sg.Input(key='ipath'), sg.FileBrowse(key='input',target='ipath')],
+            [sg.Text('Output video',background_color=TexBGCol, size=(10, 1)),sg.Input(key='opath'), sg.FileSaveAs(key='output',target='opath')],
+            [sg.Text('                              Palette size',background_color=TexBGCol, size=(24, 1)),sg.Input(key='palette', size=(12, 1),default_text='32')],
+            [sg.Text('                               Video width',background_color=TexBGCol, size=(24, 1)),sg.Input(key='width', size=(12, 1),default_text='256')],
+            [sg.Text('                              Video height',background_color=TexBGCol, size=(24, 1)),sg.Input(key='height', size=(12, 1),default_text='192')],
+            [sg.Text('                                Frame rate',background_color=TexBGCol, size=(24, 1)),sg.Input(key='fps', size=(12, 1),default_text='15')],
+            [sg.Text('                              Video dither',background_color=TexBGCol, size=(24, 1)),sg.Combo(['bayer','heckbert','floyd_steinberg','sierra2','sierra2_4a'],key='dither', size=(12, 1),default_value='sierra2')],
+            [sg.Text('                    Audio compression     ',background_color=TexBGCol, size=(24, 1)),sg.Combo(['vorbis','wma','pcm'],key='acd',size=(12, 1),default_value='wma')],
+            [sg.Text('                     Audio sample rate    ',background_color=TexBGCol, size=(24, 1)),sg.Combo(['8000','11025','16000','22050','24000','32000','44100','48000'],key='asr', size=(12, 1),default_value='44100')],
+            [sg.Text('                            Audio bit rate',background_color=TexBGCol, size=(24, 1)),sg.Combo(['8k','16k','24k','32k','40k','48k','56k','64k','80k','96k','128k'],key='abr', size=(12, 1),default_value='32k')],
+            [sg.Text('Ready!',background_color=TexBGCol,size=(69,1),key='status')],
             [sg.Button('Go!'), sg.Button('Exit')]]
 
-window = sg.Window('Get filename example', layout)
+window = sg.Window('vid2htv', layout)
 
 def update_text(window,text):
     window['status'].update(text)
