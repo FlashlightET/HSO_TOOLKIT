@@ -1,5 +1,5 @@
 # HSO_TOOLKIT
-experimental hypnospace outlaw file manipulation tools & modding guide!
+Experimental Hypnospace Outlaw file manipulation tools & modding guide?
 
 modding tools
 
